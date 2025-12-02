@@ -3,6 +3,11 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+const api = {
+  key: "ae657a09ca34013154f5e061ac26a02d",
+  base: ""
+}
+
 function App() {
   const [count, setCount] = useState(0)
 
