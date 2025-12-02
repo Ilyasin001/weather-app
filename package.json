@@ -1,0 +1,20 @@
+{
+  "name": "weather-app",
+  "version": "1.0.0",
+  "description": "none",
+  "homepage": "https://github.com/Ilyasin001/weather-app#readme",
+  "bugs": {
+    "url": "https://github.com/Ilyasin001/weather-app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ilyasin001/weather-app.git"
+  },
+  "license": "ISC",
+  "author": "ilyasin",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
