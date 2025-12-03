@@ -5,34 +5,31 @@ import './App.css'
 
 const api = {
   key: "ae657a09ca34013154f5e061ac26a02d",
-  base: ""
+  base: "https://api.openweathermap.org/data/2.5/"
 }
+
+fetch(`${api.base}weather?q=London&appid=${api.key}`)
+  .then(res => res.json())
+  .then(data => console.log(data));
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div class="container">
+        <h1>Weather App</h1>
+
+        <input 
+          type="text" 
+          id="searchInput" 
+          placeholder="Enter a city..."
+        />
+
+        <button id="searchBtn">Search</button>
+
+        <div id="weatherResult"></div>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   )
 }
