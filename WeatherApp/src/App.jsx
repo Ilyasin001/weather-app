@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 const api = {
@@ -8,25 +6,30 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/"
 }
 
-fetch(`${api.base}weather?q=London&appid=${api.key}`)
-  .then(res => res.json())
-  .then(data => console.log(data));
-
 function App() {
-  const [count, setCount] = useState(0)
+  const [city, setCity] = useState(0)
 
+  const handleSearch = () => {
+    console.log("Seaching for:", city)
+    fetch(`${api.base}weather?q=London&appid=${api.key}`)
+    .then(res => res.json())
+    .then(city => console.log(city));
+
+  }
   return (
     <>
-      <div class="container">
+      <div className ="container">
         <h1>Weather App</h1>
 
         <input 
           type="text" 
           id="searchInput" 
           placeholder="Enter a city..."
+          value={city}
+          onChange={(e) => setCity(e.target.value)}
         />
 
-        <button id="searchBtn">Search</button>
+        <button id="searchBtn" onClick = {handleSearch}>Search</button>
 
         <div id="weatherResult"></div>
       </div>
