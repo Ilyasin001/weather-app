@@ -9,10 +9,10 @@ function App() {
 
   const api = {
     key: "ae657a09ca34013154f5e061ac26a02d",
-    base: "https://api.openweathermap.org/data/2.5/"
+    base: "https://api.openweathermap.org/data/2.5/weather"
   }
 
-  const handleSearch = () => {
+ const handleSearch = () => {
     if (!city) return;
 
     fetch(`${api.base}weather?q=${encodeURIComponent(city)}&appid=${api.key}&units=metric`)
