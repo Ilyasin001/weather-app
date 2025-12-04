@@ -44,7 +44,8 @@ function App() {
             <h2 id = "title">{weather.name}</h2>
             <p id = "metric temp" >{weather.main.temp}°C</p>
             <p id = "metric desc">{weather.weather[0].description}</p>
-            <p id = "metric humid">{weather.main.humidity}</p>
+            <p id = "metric humid">{weather.main.humidity}g/m³</p>
+            <p id = "metric wind">{weather.wind.speed}mph</p>
           </div>
         )}
       </div>
