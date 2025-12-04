@@ -5,6 +5,7 @@ import './App.css'
 
 function App() {
   const [city, setCity] = useState(0)
+  const [weather, setWeather] = useState(null);
 
   const api = {
     key: "ae657a09ca34013154f5e061ac26a02d",
@@ -18,6 +19,7 @@ function App() {
       .then(res => res.json())
       .then(data => {
         console.log("Fetched data:", data);
+        setWeather(data);
       })
       .catch(err => console.error(err));
   };
@@ -37,9 +39,14 @@ function App() {
 
         <button id="searchBtn" onClick = {handleSearch}>Search</button>
 
-        <div id="weatherResult">
-          <p>{city.name}</p>
-        </div>
+        {weather && weather.main && (
+          <div className="weatherInfo">
+            <h2 id = "title">{weather.name}</h2>
+            <p id = "metric temp" >{weather.main.temp}°C</p>
+            <p id = "metric desc">{weather.weather[0].description}</p>
+            <p id = "metric humid">{weather.main.humidity}</p>
+          </div>
+        )}
       </div>
     </>
   )
