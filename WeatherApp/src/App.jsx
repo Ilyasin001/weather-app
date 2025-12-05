@@ -1,56 +1,81 @@
-import { useState } from 'react'
-import './App.css'
+// API KEY : ae657a09ca34013154f5e061ac26a02d
 
+import "./App.css";
+import { useState } from "react";
 
+const api = {
+  key: "ae657a09ca34013154f5e061ac26a02d",
+  geo: "https://api.openweathermap.org/geo/1.0/",
+  base: "https://api.openweathermap.org/data/2.5/",
+};
 
 function App() {
-  const [city, setCity] = useState(0)
+  const [search, setSearch] = useState("");
   const [weather, setWeather] = useState(null);
 
-  const api = {
-    key: "ae657a09ca34013154f5e061ac26a02d",
-    base: "https://api.openweathermap.org/data/2.5/weather"
-  }
+  const searchPressed = async () => {
+    if (!search) return alert("Please enter a city.");
 
- const handleSearch = () => {
-    if (!city) return;
+    try {
+      const geoRes = await fetch(
+        `${api.geo}direct?q=${encodeURIComponent(
+          search
+        )}&limit=1&appid=${api.key}`
+      );
+      const geoData = await geoRes.json();
 
-    fetch(`${api.base}weather?q=${encodeURIComponent(city)}&appid=${api.key}&units=metric`)
-      .then(res => res.json())
-      .then(data => {
-        console.log("Fetched data:", data);
-        setWeather(data);
-      })
-      .catch(err => console.error(err));
+      if (!geoData || geoData.length === 0) {
+        alert("City not found. Please enter a valid city.");
+        setWeather(null);
+        return;
+      }
+
+      const { lat, lon, name, country } = geoData[0];
+
+      const weatherRes = await fetch(
+        `${api.base}weather?lat=${lat}&lon=${lon}&units=metric&appid=${api.key}`
+      );
+      const weatherData = await weatherRes.json();
+
+      weatherData.cityName = name;
+      weatherData.country = country;
+
+      setWeather(weatherData);
+    } catch (error) {
+      alert("An error occurred. Try again.");
+      console.error(error);
+    }
   };
 
   return (
-    <>
-      <div className ="container">
+    <div className="App">
+      <header className="App-header">
         <h1>Weather App</h1>
 
-        <input 
-          type="text" 
-          id="searchInput" 
-          placeholder="Enter a city..."
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-        />
+        <div>
+          <input
+            type="text"
+            placeholder="Enter city..."
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <button onClick={searchPressed}>Search</button>
+        </div>
 
-        <button id="searchBtn" onClick = {handleSearch}>Search</button>
+        {weather && (
+          <div>
+            <p>
+              {weather.cityName}, {weather.country}
+            </p>
 
-        {weather && weather.main && (
-          <div className="weatherInfo">
-            <h2 id = "title">{weather.name}</h2>
-            <p id = "metric temp" >{weather.main.temp}°C</p>
-            <p id = "metric desc">{weather.weather[0].description}</p>
-            <p id = "metric humid">{weather.main.humidity}g/m³</p>
-            <p id = "metric wind">{weather.wind.speed}mph</p>
+            <p>{weather.main.temp}°C</p>
+            <p>{weather.weather[0].main}</p>
+            <p>({weather.weather[0].description})</p>
           </div>
         )}
-      </div>
-    </>
-  )
+      </header>
+    </div>
+  );
 }
 
-export default App
+export default App;
+
