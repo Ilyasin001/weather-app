@@ -46,6 +46,7 @@ function App() {
       weatherData.country = country;
 
       setWeather(weatherData);
+      console.log(weatherData);
       // error handling
     } catch (error) {
       alert("An error occurred. Try again.");
@@ -69,11 +70,17 @@ function App() {
 
         {weather && (
           <div>
-            <p>
+            <h2>
               {weather.cityName}, {weather.country}
-            </p>
+            </h2>
 
             <p>{weather.main.temp}°C</p>
+            <p>{weather.main.humidity}g/m³</p>
+            <p>{weather.wind.speed}mph</p>
+              <p>{weather.wind.speed < 1 ? "Calm" : 
+                weather.wind.speed < 3 ? "Light Air" : 
+                weather.wind.speed < 7? "Light Breeze" :
+                weather.wind.speed < 12? "Gentle Breeze" : "Moderate Breeze"}</p>
             <p>{weather.weather[0].main}</p>
             <p>({weather.weather[0].description})</p>
           </div>
