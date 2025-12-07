@@ -56,36 +56,35 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Weather App</h1>
+        <h1 id = "title">Weather App</h1>
 
         <div>
           <input
             type="text"
+            id = "search-field"
             placeholder="Enter city..."
             onChange={(e) => setSearch(e.target.value)}
           />
-          <button onClick={searchPressed}>Search</button>
+          <button id="search-btn" onClick={searchPressed}>Search</button>
         </div>
 
         {weather && (
           <div>
-            <h2>
+            <h2 id="city-title">
               {weather.cityName}, {weather.country}
             </h2>
 
-            <p>{weather.main.temp}°C</p>
-            <p>{weather.main.humidity}g/m³</p>
-            <p>{weather.wind.speed}mph</p>
-              <p>{weather.wind.speed < 1 ? "Calm" : 
+            <p id = "metric temp" >{weather.main.temp}°C</p>
+            <p id = "metric humid" >{weather.main.humidity}g/m³</p>
+            <p id = "metric speed" >{weather.wind.speed}mph</p>
+            <p id = "metric wind-speed" >{weather.wind.speed < 1 ? "Calm" : 
                 weather.wind.speed < 3 ? "Light Air" : 
                 weather.wind.speed < 7? "Light Breeze" :
                 weather.wind.speed < 12? "Gentle Breeze" : "Moderate Breeze"}</p>
-            <p>{weather.weather[0].main}</p>
-            <p>({weather.weather[0].description})</p>
+            <p id = "metric clouds" >{weather.weather[0].main}</p>
+            <p id = "metric desc" >({weather.weather[0].description})</p>
           </div>
         )}
-      </header>
     </div>
   );
 }
