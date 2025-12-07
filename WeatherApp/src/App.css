@@ -1,6 +1,7 @@
-#root{
+@import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap');
 
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+#root{
+  font-family: Alan Sans, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -17,14 +18,16 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #3685B5;
+  background-color: #0077B6;
 }
 
 .App{
   padding: 30px;
   background-color: rgb(0, 0, 0,0.13);
-  border: #1a1a1abf solid 4px;
+  border: #F4FFF8 solid 4px;
   border-radius: 20px;
+  min-height: fit-content;
+  min-width: 500px;
 }
 
 #title{
@@ -34,30 +37,46 @@ body {
   padding: 5px;
 }
 
+#search{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 20px;
+}
+
 #search-field{
-  background-color: #89AAE6 ;
+  background-color: #90E0EF;
   color: #F4FFF8;
   border: #F4FFF8 solid 2px;
   border-radius: 7px;
+  padding: 5px;
+  padding-left: 10px;
+  outline: none;
+  text-decoration: none;
+  width: 250px;
+  font-size: 0.9em;
   
 }
 
 #search-btn {
-  color: #1a1a1a;
+  color: #CAF0F8;
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 0.75em;
   font-weight: 500;
+  width: 100px;
+  min-width: 75px;
   font-family: inherit;
-  background-color: #F4FFF8;
-  border: #1a1a1a solid 1px;
+  background-color: #09869f;
+  border: #F4FFF8 solid 1px;
   cursor: pointer;
   transition: all 0.3s;
 }
 #search-btn:hover {
-  background-color: #89AAE6;
-  border-color: #646cff;
+  background-color: #0077B6;
+  border-color: #0077B6;
+  scale: calc(1.05);
 }
 
 

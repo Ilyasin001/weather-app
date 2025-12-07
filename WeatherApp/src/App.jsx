@@ -58,7 +58,7 @@ function App() {
     <div className="App">
         <h1 id = "title">Weather App</h1>
 
-        <div>
+        <div id = "search">
           <input
             type="text"
             id = "search-field"
