@@ -1,5 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap');
-
+/*  colour palette: 
+      1. 03045E
+      2. 0077B6
+      3. 00B4D8
+      4. 90E0EF
+      5. CAF0F8
+*/
 #root{
   font-family: Alan Sans, sans-serif;
   line-height: 1.5;
@@ -23,11 +29,31 @@ body {
 
 .App{
   padding: 30px;
-  background-color: rgb(0, 0, 0,0.13);
+  background-color: rgba(0, 0, 0, 0);
   border: #F4FFF8 solid 4px;
   border-radius: 20px;
   min-height: fit-content;
   min-width: 500px;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  transition: all 0.6s;
+}
+.App::after{
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  background-image: linear-gradient(to bottom right, #CAF0F8, #90E0EF);
+  z-index: -10;
+}
+.App:hover{
+  box-shadow: 0px 0 50px #CAF0F8;
 }
 
 #title{
@@ -55,7 +81,10 @@ body {
   text-decoration: none;
   width: 250px;
   font-size: 0.9em;
-  
+  transition: all 0.4s;
+}
+#search-field:hover{
+  scale: calc(1.05);
 }
 
 #search-btn {
@@ -73,10 +102,27 @@ body {
   cursor: pointer;
   transition: all 0.3s;
 }
+
 #search-btn:hover {
   background-color: #0077B6;
   border-color: #0077B6;
   scale: calc(1.05);
 }
+
+p{
+  border: #F4FFF8 solid 2px;
+  border-radius: 15px;
+  padding: 10px 30px;
+  background-image: linear-gradient(to bottom right, #90E0EF 20%, #0077B6);
+  transition: all 0.5s;
+}
+p:hover{
+  background-color: #0077B6;
+  border-color: #0077B6;
+  scale: calc(1.05);
+  box-shadow: 2px 0 50px #0076b652;
+
+}
+
 
 
