@@ -55,36 +55,38 @@ function App() {
   };
 
   return (
-    <div className="App">
-        <h1 id = "title">Weather App</h1>
+    <div id = "container">
+      <div className="App">
+          <h1 id = "title">Weather App</h1>
 
-        <div id = "search">
-          <input
-            type="text"
-            id = "search-field"
-            placeholder="Enter city..."
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <button id="search-btn" onClick={searchPressed}>Search</button>
-        </div>
-
-        {weather && (
-          <div>
-            <h2 id="city-title">
-              {weather.cityName}, {weather.country}
-            </h2>
-
-            <p id = "metric temp" >{weather.main.temp}°C</p>
-            <p id = "metric humid" >{weather.main.humidity}g/m³</p>
-            <p id = "metric speed" >{weather.wind.speed}mph</p>
-            <p id = "metric wind-speed" >{weather.wind.speed < 1 ? "Calm" : 
-                weather.wind.speed < 3 ? "Light Air" : 
-                weather.wind.speed < 7? "Light Breeze" :
-                weather.wind.speed < 12? "Gentle Breeze" : "Moderate Breeze"}</p>
-            <p id = "metric clouds" >{weather.weather[0].main}</p>
-            <p id = "metric desc" >({weather.weather[0].description})</p>
+          <div id = "search">
+            <input
+              type="text"
+              id = "search-field"
+              placeholder="Enter city..."
+              onChange={(e) => setSearch(e.target.value)}
+            />
+            <button id="search-btn" onClick={searchPressed}>Search</button>
           </div>
-        )}
+
+          {weather && (
+            <div id = "metric-container">
+              <h2 id="city-title">
+                {weather.cityName}, {weather.country}
+              </h2>
+
+              <p id = "temp" >{weather.main.temp}°C</p>
+              <div><p id = "speed" >{weather.wind.speed}mph</p>
+              <p id = "wind-speed" >{weather.wind.speed < 1 ? "Calm" : 
+                  weather.wind.speed < 3 ? "Light Air" : 
+                  weather.wind.speed < 7? "Light Breeze" :
+                  weather.wind.speed < 12? "Gentle Breeze" : "Moderate Breeze"}</p></div>
+              <p id = "humid" >{weather.main.humidity}g/m³</p>
+              <div><p id = "clouds" >{weather.weather[0].main}</p>
+              <p id = "desc" >({weather.weather[0].description})</p></div>
+            </div>
+          )}
+      </div>
     </div>
   );
 }
