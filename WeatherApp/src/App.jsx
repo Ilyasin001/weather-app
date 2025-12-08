@@ -56,7 +56,7 @@ function App() {
 
   return (
     <div id = "container">
-      <div className="App">
+       <div className="App">
           <h1 id = "title">Weather App</h1>
 
           <div id = "search">
