@@ -19,7 +19,7 @@ function App() {
     if (!search) return alert("Please enter a city.");
 
     try {
-      // fetches geo api response
+      // tries to fetches geo api response
       const geoRes = await fetch(
         `${api.geo}direct?q=${encodeURIComponent(
           search
